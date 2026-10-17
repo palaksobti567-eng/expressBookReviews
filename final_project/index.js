@@ -10,7 +10,6 @@ app.use(express.json());
 
 app.use("/customer", session({ secret: "fingerprint_customer", resave: true, saveUninitialized: true }));
 
-// Authentication middleware: runs before every /customer/auth/* route
 app.use("/customer/auth/*", function auth(req, res, next) {
     if (req.session.authorization) {
         const token = req.session.authorization['accessToken'];
